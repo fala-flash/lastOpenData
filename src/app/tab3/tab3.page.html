@@ -1,17 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf=" showTitle && comune.length > 0">
+      Concorsi per {{comune}}
     </ion-title>
+    <ion-title *ngIf=" showTitle && comune.length == 0"> Concorsi </ion-title>
+    <ion-buttons slot="end">
+      <ion-button ion-button (click)="refresh()">
+        <ion-icon
+          size="large"
+          size="large"
+          name="refresh-circle"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div *ngIf="isLoading" id="loading-spinner">
+    <ion-spinner name="crescent" color="tertiary"></ion-spinner>
+  </div>
+  <div
+    style="
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+    "
+  >
+    <div *ngIf="showList">
+      <div *ngFor="let data of filteredJson">
+        <ion-card color="secondary" style="margin-top: 2rem" (click)="openModalConcorsi(data)">
+          <ion-card-header>
+            <ion-card-subtitle>Comune: {{data.Comune}}</ion-card-subtitle>
+            <ion-card-title>Argomento: {{data.Argomento}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </div>
+    </div>
+    
+  </div>
 </ion-content>

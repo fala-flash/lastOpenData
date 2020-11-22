@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">OpenDataMc</string>
+    <string name="title_activity_main">OpenDataMc</string>
+    <string name="package_name">opendata.mc.app</string>
+    <string name="custom_url_scheme">opendata.mc.app</string>
+</resources>

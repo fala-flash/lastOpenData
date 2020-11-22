@@ -1,0 +1,13 @@
+#loading-spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+ion-spinner{
+    width: 25% !important;
+    height: 25% !important;
+}

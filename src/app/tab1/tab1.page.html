@@ -1,17 +1,50 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title> Comune </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="isLoading" id="loading-spinner">
+    <ion-spinner name="crescent" color="tertiary"></ion-spinner>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div *ngIf="!isLoading" class="wrapper">
+    <p>In questa pagina potrai selezionare il tuo comune.</p>
+    <p>
+      Cliccando su <strong>Usa la mia posizione</strong> otterrai la tua
+      poszione attuale tramite GPS.
+    </p>
+    <p>
+      Cliccando su <strong>Seleziona Comune</strong> potrai scegliere il comune
+      di interesse.
+    </p>
+    <p>
+      Una volta ottenuto il comune, verranno filtrati i risultati nelle pagine
+      di Bandi e Concorsi.
+    </p>
+    <p>
+      Per visualizzare tutti i risultati senza filtro, premere il bottone
+      <strong>Rimuovi Filtro</strong>
+    </p>
+    <ion-button
+      color="tertiary"
+      (click)="getCurrentCoordinates()"
+      expand="block"
+      >Usa la mia posizione</ion-button
+    >
+    <br />
+    <ion-button color="tertiary" (click)="openModalComuni()" expand="block"
+      >Seleziona Comune</ion-button
+    >
+    <br />
+    <p *ngIf="showComune && comune.length > 0">Comune attuale: {{ comune }}</p>
+    <ion-button
+      color="tertiary"
+      *ngIf="showComune && comune.length > 0"
+      (click)="removeFiltro()"
+      expand="block"
+      >Rimuovi Filtro</ion-button
+    >
+  </div>
 </ion-content>

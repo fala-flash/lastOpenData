@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button ion-button (click)="closeModal()">
+        <ion-icon size="large" size="large" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>BANDO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="info">
+    <h6>Comune: <span>{{data.Comune}}</span></h6>
+    <h6>Oggetto:</h6>
+    <p>{{data.Oggetto}}</p>
+    <h6>Riferimento: <span>{{data.Riferimento}}</span></h6>
+    <h6>Url:</h6>
+    <a href="{{data.Url}}">{{data.Url.substring(0,40)}}</a>
+  </div>
+
+  <br>
+  
+  <ion-button color="tertiary" size="large" (click)="share(data.Url)" expand="block"
+    >Condividi Bando</ion-button
+  >
+</ion-content>
