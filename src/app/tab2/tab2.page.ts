@@ -1,18 +1,18 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NativeStorage } from "@ionic-native/native-storage/ngx";
 import { HttpClient } from "@angular/common/http";
 import { ModalController } from "@ionic/angular";
 import { ModalBandiPage } from "../modal-bandi/modal-bandi.page";
 
-const BANDI_URL = "http://192.168.1.43:5000/opendatamacerata/bandi";
-const BANDI_HASH_URL = "http://192.168.1.43:5000/opendatamacerata/hashbandi";
+const BANDI_URL = "http://5.196.27.144:81/opendatamacerata/bandi";
+const BANDI_HASH_URL = "http://5.196.27.144:81/opendatamacerata/hashbandi";
 
 @Component({
   selector: "app-tab2",
   templateUrl: "tab2.page.html",
   styleUrls: ["tab2.page.scss"],
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
   comune: string = "";
   isLoading: boolean;
   showTitle: boolean;
@@ -27,6 +27,9 @@ export class Tab2Page {
     private nativeStorage: NativeStorage,
     private http: HttpClient
   ) {}
+  ngOnInit(): void {
+    this.getComune();
+  }
   ionViewWillEnter() {
     this.getComune();
   }

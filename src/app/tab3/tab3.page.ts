@@ -1,19 +1,19 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NativeStorage } from "@ionic-native/native-storage/ngx";
 import { HttpClient } from "@angular/common/http";
 import { ModalConcorsiPage } from "../modal-concorsi/modal-concorsi.page";
 import { ModalController } from "@ionic/angular";
 
-const CONCORSI_URL = "http://192.168.1.43:5000/opendatamacerata/concorsi";
+const CONCORSI_URL = "http://5.196.27.144:81/opendatamacerata/concorsi";
 const CONCORSI_HASH_URL =
-  "http://192.168.1.43:5000/opendatamacerata/hashconcorsi";
+  "http://5.196.27.144:81/opendatamacerata/hashconcorsi";
 
 @Component({
   selector: "app-tab3",
   templateUrl: "tab3.page.html",
   styleUrls: ["tab3.page.scss"],
 })
-export class Tab3Page {
+export class Tab3Page implements OnInit {
   comune: string = "";
   isLoading: boolean;
   showTitle: boolean;
@@ -27,6 +27,10 @@ export class Tab3Page {
     private http: HttpClient,
     public modalController: ModalController
   ) {}
+
+  ngOnInit(): void {
+    this.getComune();
+  }
 
   ionViewWillEnter() {
     this.getComune();
