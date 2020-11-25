@@ -19,7 +19,7 @@
 	```
 
 * aggiungere al file *ios/App/App/Info.plist* le seguenti chiavi se non presenti
-	```plist
+	```
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>We use your location for full functionality of certain app features.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
